@@ -20,10 +20,12 @@ class SignupView(View):
             if User.objects.filter(email = data['email']).exists():
                 raise ValidationError('DUPLICATED_EMAIL')
             
+            hashed_password = bcrypt.hashpw(data['password'].encode('utf-8'), bcrypt.gensalt()).decode()
+
             User.objects.create(
                 name         = data['name'],
                 email        = data['email'],
-                password     = data['password'],
+                password     = hashed_password,
                 phone_number = data['phone_number'],
                 etc          = data.get('etc')
             )
