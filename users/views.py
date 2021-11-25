@@ -24,8 +24,8 @@ class SignupView(View):
                 name        = data['name'],
                 email       = data['email'],
                 password    = data['password'],
-                address     = data['address'],
-                information = data.get('information')
+                phone_number       = data['phone_number'],
+                etc         = data.get('etc')
             )
             return JsonResponse({'message':'SUCCESS'},status=201)
 
