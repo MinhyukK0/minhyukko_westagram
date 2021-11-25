@@ -21,11 +21,11 @@ class SignupView(View):
                 raise ValidationError('DUPLICATED_EMAIL')
             
             User.objects.create(
-                name        = data['name'],
-                email       = data['email'],
-                password    = data['password'],
-                phone_number       = data['phone_number'],
-                etc         = data.get('etc')
+                name         = data['name'],
+                email        = data['email'],
+                password     = data['password'],
+                phone_number = data['phone_number'],
+                etc          = data.get('etc')
             )
             return JsonResponse({'message':'SUCCESS'},status=201)
 
